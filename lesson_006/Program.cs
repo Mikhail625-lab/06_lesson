@@ -1,8 +1,21 @@
 ﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 /*
 ver: 0.1a date: 2021.__.__
 autor: Mikhail625@protonmail.com
+*/
+/*
+ 1. Написать консольное приложение Task Manager, которое выводит на экран запущенные процессы и позволяет завершить указанный процесс. Предусмотреть возможность завершения процессов с помощью указания его ID или имени процесса. В качестве примера можно использовать консольные утилиты Windows tasklist и taskkill.
+2. Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х4,
+
+при подаче массива другого размера необходимо бросить исключение MyArraySizeException.
+Далее метод должен пройтись по всем элементам массива, преобразовать в int, и просуммировать.
+Если в каком-то элементе массива преобразование не удалось
+(например, в ячейке лежит символ или текст вместо числа), должно быть брошено исключение MyArrayDataException, с детализацией в какой именно ячейке лежат неверные данные.
+В методе main() вызвать полученный метод, обработать возможные исключения MySizeArrayException и MyArrayDataException, и вывести результат расчета.
+
 */
 
 namespace lesson_006
@@ -12,17 +25,27 @@ namespace lesson_006
         static void Main(string[] args)
         {
             ConfigureConsole(" Lesson #6   ver: 0.1a date: 2021.04.18");
-            // Task01();
+             Task01();
             // Task02();
             // Task03();
             // Task04();
             // Task05();
 
-
+            static void Task01()
             { // Task № 01
               // block declare init vars
               // block executive
-              // end of  Task № xx
+                System.Diagnostics.Process[] processes;
+                processes = System.Diagnostics.Process.GetProcesses();
+                foreach (System.Diagnostics.Process instance in processes)
+                {
+                    //listBox1.Items.Add(instance.ProcessName); // id  ProcessssName
+
+                    Console.WriteLine("PID:   {0}   ProcessssName: {1} ", processes.id);
+                    //processes.
+
+                }
+                // end of  Task № xx
             }
 
             { // Task № xx
