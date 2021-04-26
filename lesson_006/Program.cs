@@ -3,12 +3,15 @@ using System.Threading;
 using System.Threading.Tasks;
 
 /*
-ver: 0.1a date: 2021.__.__
+ver: 0.1b date: 2021.04.26
 autor: Mikhail625@protonmail.com
 */
 /*
- 1. Написать консольное приложение Task Manager, которое выводит на экран запущенные процессы и позволяет завершить указанный процесс. Предусмотреть возможность завершения процессов с помощью указания его ID или имени процесса. В качестве примера можно использовать консольные утилиты Windows tasklist и taskkill.
-2. Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х4,
+ 1. Написать консольное приложение Task Manager, которое выводит на экран запущенные процессы и позволяет завершить указанный процесс. 
+    Предусмотреть возможность завершения процессов с помощью указания его ID или имени процесса. 
+    В качестве примера можно использовать консольные утилиты Windows tasklist и taskkill.
+
+ 2. Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х4,
 
 при подаче массива другого размера необходимо бросить исключение MyArraySizeException.
 Далее метод должен пройтись по всем элементам массива, преобразовать в int, и просуммировать.
@@ -25,28 +28,85 @@ namespace lesson_006
         static void Main(string[] args)
         {
             ConfigureConsole(" Lesson #6   ver: 0.1a date: 2021.04.18");
-             Task01();
+            Task01();
             // Task02();
             // Task03();
             // Task04();
             // Task05();
 
             static void Task01()
-            { // Task № 01
+            { // Task № 01 Task Manager
               // block declare init vars
               // block executive
-                System.Diagnostics.Process[] processes;
-                processes = System.Diagnostics.Process.GetProcesses();
-                foreach (System.Diagnostics.Process instance in processes)
+                string processName;
+                string processId;
+                bool foundProc = false;
+
+
+                // output process
+                System.Diagnostics.Process[] runingProcess;
+                runingProcess = System.Diagnostics.Process.GetProcesses();
+                foreach (System.Diagnostics.Process instance in runingProcess)
                 {
-                    //listBox1.Items.Add(instance.ProcessName); // id  ProcessssName
 
                     Console.WriteLine("PID:   {0}   \t \t Name: {1} ", instance.Id, instance.ProcessName);
                     //processes.
 
                 }
-                // end of  Task № xx
-            }
+
+                // kill process by ID
+                processId = GetStrFromCons("Enter Id process to kill:", "");
+
+                for (int i = 0; i < runingProcess.Length; i++)
+                {
+                    if (TestForNullOrEmpty(processId) == true)
+                    {
+                        Console.WriteLine("   Error. Id process is EMPTY or is NULL \n   Please try again or exit ");
+                        break;
+                    }
+
+                    if (runingProcess[i].Id == Convert.ToInt64(processId))
+                    {
+                        foundProc = true;
+                        runingProcess[i].Kill();
+
+                    }
+                }
+
+                if (foundProc == false)
+                {
+                    Console.WriteLine("   Sorry, the given process with Id:[{0}] thread was not found  ", processId);
+                }
+
+
+                foundProc = false;
+                processName = GetStrFromCons("Enter process name fo kill:", "");
+
+                for (int i = 0; i < runingProcess.Length; i++)
+                {
+                    if (TestForNullOrEmpty(processName) == true)
+                    {
+                        Console.WriteLine("   Error. Name process is EMPTY or is NULL \n   Please try again or exit ");
+                        break;
+                    }
+
+                    if (runingProcess[i].ProcessName == processName)
+                    {
+                        foundProc = true;
+                        runingProcess[i].Kill();
+
+                    }
+                }
+
+                if (foundProc == false)
+                {
+                    Console.WriteLine("   Sorry, the given process [{0}] thread was not found", processName);
+                }
+
+                // block kill proccess Q: Есть теоритический предел количеству запущенных задач\процессов под Win7/10 
+                // 
+
+            }// end of  Task № 01  Task Manager 
 
             { // Task № xx
               // block declare init vars
