@@ -41,7 +41,7 @@ namespace lesson_006
                 {
                     //listBox1.Items.Add(instance.ProcessName); // id  ProcessssName
 
-                    Console.WriteLine("PID:   {0}   ProcessssName: {1} ", processes.id);
+                    Console.WriteLine("PID:   {0}   \t \t Name: {1} ", instance.Id, instance.ProcessName);
                     //processes.
 
                 }
