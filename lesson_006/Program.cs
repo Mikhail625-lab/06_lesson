@@ -120,13 +120,27 @@ namespace lesson_006
                 int dimY = 3;
 
                 Random rnd1 = new Random();
-                string[,] arrStr1 = new string[dimX , dimY];
+                string[,] arrData = new string[dimX , dimY];
                 // block executive
 
-                int intVal = rnd1.Next();
-                Console.WriteLine();   
-                        
-                        // end of  Task № xx
+                int intVal = rnd1.Next(1,1000);
+                for (int i = 0; i < dimX; i++)
+                {
+                    for (int j = 0; j < dimY; j++)
+                    {
+                        arrData[i, j] = Convert.ToString(rnd1.Next(1, 1000));
+                    }
+
+                }
+
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                Console.Write(ArraySummElements(arrData));
+
+
+
+
+
+                // end of  Task № xx
             }//  Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х4,
 
 
@@ -154,8 +168,44 @@ namespace lesson_006
               // end of  Task № xx
             }
 
-            // under
+            static int ArraySummElements (string[,] arr)
+            {
+                int summaElements =0;
+                int i =0; 
+                int j =0;
+                foreach ( string e in arr)
+                {
+                    //summaElements += Convert.ToInt16(strElement);
+                    Console.WriteLine("   i:[{0}] \t j:[{1}] \t  val:[{2}]  " 
+                        , i ,j , e.ToString());
+                    summaElements += Convert.ToInt32(e);
 
+                    i++;
+                    j++;
+
+                }
+                Console.ForegroundColor = ConsoleColor.Gray;
+                Console.WriteLine("                       _____________");
+                Console.WriteLine("                        Summa: {0}", summaElements);
+
+                Console.ForegroundColor = ConsoleColor.DarkGray;
+                return  summaElements;
+            }
+
+
+            // under
+            static void ArrayPrint2D(int[,] arr)
+            {
+                // Display the array elements.
+                for (int i = 0; i < arr.GetLength(0); i++)
+                {
+                    for (int j = 0; j < arr.GetLength(1); j++)
+                    {
+                        System.Console.WriteLine("Element({0},{1})={2}", i, j, arr[i, j]);
+                    }
+                }
+            }
+            
             static string GetStrFromCons(string strQuestion, string strByDef)
             {
                 string strResult;
