@@ -3,7 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 /*
-ver: 0.1b date: 2021.04.26
+ver: 2.1a date: 2021.04.26
 autor: Mikhail625@protonmail.com
 */
 /*
@@ -28,8 +28,8 @@ namespace lesson_006
         static void Main(string[] args)
         {
             ConfigureConsole(" Lesson #6   ver: 0.1a date: 2021.04.18");
-            Task01();
-            // Task02();
+             Task01();
+             Task02();
             // Task03();
             // Task04();
             // Task05();
@@ -108,11 +108,16 @@ namespace lesson_006
 
             }// end of  Task № 01  Task Manager 
 
-            { // Task № xx
+
+            static void Task02()
+
+            { // Task № xx Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х
               // block declare init vars
+                string[,] arrStr1 = new string[3, 3];
               // block executive
               // end of  Task № xx
-            }
+            }//  Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х4,
+
 
             { // Task № xx
               // block declare init vars
