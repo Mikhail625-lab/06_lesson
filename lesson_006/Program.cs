@@ -61,7 +61,8 @@ namespace lesson_006
                 {
                     if (TestForNullOrEmpty(processId) == true)
                     {
-                        Console.WriteLine("   Error. Id process is EMPTY or is NULL \n   Please try again or exit ");
+                        Console.ForegroundColor = ConsoleColor.DarkGray;
+                        Console.WriteLine("   ! Error. Id process is EMPTY or is NULL !\n   ! Please try again or exit              !");
                         break;
                     }
 
@@ -80,6 +81,7 @@ namespace lesson_006
 
 
                 foundProc = false;
+                Console.WriteLine();
                 processName = GetStrFromCons("Enter process name fo kill:", "");
 
                 for (int i = 0; i < runingProcess.Length; i++)
@@ -113,9 +115,18 @@ namespace lesson_006
 
             { // Task № xx Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х
               // block declare init vars
-                string[,] arrStr1 = new string[3, 3];
-              // block executive
-              // end of  Task № xx
+                
+                int dimX = 3; 
+                int dimY = 3;
+
+                Random rnd1 = new Random();
+                string[,] arrStr1 = new string[dimX , dimY];
+                // block executive
+
+                int intVal = rnd1.Next();
+                Console.WriteLine();   
+                        
+                        // end of  Task № xx
             }//  Напишите метод, на вход которого подаётся двумерный строковый массив размером 4х4,
 
 
@@ -161,9 +172,11 @@ namespace lesson_006
                 {
                     strResult = strByDef;
                     Console.ForegroundColor = ConsoleColor.DarkGray;
-                    Console.WriteLine("       " + "Not value, set by default: ");
+                    Console.Write("       " + "Not value, set by default: [");
                     Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine(strResult);
+                    Console.Write(strResult);
+                    Console.ForegroundColor = ConsoleColor.DarkGray;
+                    Console.WriteLine("]");
                     Console.ForegroundColor = ConsoleColor.Gray;
                     Console.WriteLine("");
 
